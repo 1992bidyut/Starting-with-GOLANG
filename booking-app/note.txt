@@ -1,12 +1,12 @@
 		
-        
-    // var bookings = [50]string{"Name","Bidyut", "Debnath"} // it's array
+     //>>>>>> Array   
+    // var bookings = [50]string{"Name","Bidyut", "Debnath"} // it's array with value
 	// var bookings [50]string
 	// var bookings []string
     
     
     
-    // // switch case
+    //>>>>>> switch case
 	// city := "London"
 	// switch city{
 	// case "New York":
@@ -15,11 +15,24 @@
 	// 	// some code for two city
 	// case "Mexico City":
 	// 	//some code
-	
 	// default:
 	// 	// default execution code
 	// }
 
 
+	//>>>>>>> experation
     // isValidCity := city == "Singapur" || city == "London"
 	// !isValidCity
+
+
+	//>>>>>>map with only one type data
+	// var bookings = []string{} //it's slices
+	// var bookings = make([]map[string]string, 0) //it's slice of map
+
+	//var userData = make(map[string]string)
+	// userData["firstNAme"] = firstName
+	// userData["lastName"] = lastName
+	// userData["email"] = email
+	// userData["email"] = email
+	// userData["numberOfTickets"] = strconv.FormatUint(uint64(userTickets), 10)
+	//bookings = append(bookings, userData)

@@ -3,13 +3,19 @@ package main
 import (
 	"booking-app/helper"
 	"fmt"
-	"strings"
 )
 
 const conferenceTickets int = 50
 var conferenceName string = "Go Conference"
 var remainingTickets uint = 50
-var bookings = []string{} //it's slices
+
+var bookings = make([]UserData, 0) //it's struct
+type UserData struct{
+	firstName string
+	lastName string
+	email string
+	numberOfTickets uint
+}
 
 func main(){
 	greetUsers()
@@ -50,8 +56,8 @@ func greetUsers(){
 func getFirstName() []string{
 	firstNames := []string{}
 	for _, booking := range bookings{  // '_' indicate the unused variable in Go. We use this when we don't know the uses of some variables
-		var names = strings.Fields(booking)
-		firstNames = append(firstNames, names[0])
+		// var names = strings.Fields(booking) //
+		firstNames = append(firstNames, booking.firstName)
 	}
 	return firstNames
 }
@@ -79,7 +85,17 @@ func getUserInputs()(string, string, string, uint){
 
 func bookeTicket(firstName string,lastName string, email string, userTickets uint ){
 	remainingTickets = remainingTickets - userTickets
-	bookings = append(bookings, firstName + " " + lastName)
+	
+	// create a custom struct data initial
+	var userData = UserData{
+		firstName: firstName,
+		lastName: lastName,
+		email: email,
+		numberOfTickets: userTickets,
+	}
+
+	bookings = append(bookings, userData)
+	fmt.Printf("List of bookings are %v\n", bookings)
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName,userTickets, email)
 	fmt.Printf("%v tickets are remaining!\n",remainingTickets)
