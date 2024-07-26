@@ -1,0 +1,25 @@
+		
+        
+    // var bookings = [50]string{"Name","Bidyut", "Debnath"} // it's array
+	// var bookings [50]string
+	// var bookings []string
+    
+    
+    
+    // // switch case
+	// city := "London"
+	// switch city{
+	// case "New York":
+	// 	//  some code
+	// case "Singapore", "London":
+	// 	// some code for two city
+	// case "Mexico City":
+	// 	//some code
+	
+	// default:
+	// 	// default execution code
+	// }
+
+
+    // isValidCity := city == "Singapur" || city == "London"
+	// !isValidCity
