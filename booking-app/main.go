@@ -3,6 +3,7 @@ package main
 import (
 	"booking-app/helper"
 	"fmt"
+	"time"
 )
 
 const conferenceTickets int = 50
@@ -25,8 +26,8 @@ func main(){
 		isValidEmail, isValidName, isValidTicketNumber := helper.ValidateUserInputs(firstName, lastName, email, userTickets, remainingTickets)
 
 		if isValidName && isValidEmail && isValidTicketNumber{
-			bookeTicket(firstName,lastName, email, userTickets)
-
+			bookTicket(firstName,lastName, email, userTickets)
+			go sendTicket(userTickets, firstName, lastName, email)
 			firstNames := getFirstName()
 			fmt.Printf("The first names of bookings are: %v\n", firstNames)
 			// var noTicketsRemaining bool = remainingTickets == 0
@@ -83,7 +84,7 @@ func getUserInputs()(string, string, string, uint){
 	return firstName, lastName, email, userTickets
 }
 
-func bookeTicket(firstName string,lastName string, email string, userTickets uint ){
+func bookTicket(firstName string,lastName string, email string, userTickets uint ){
 	remainingTickets = remainingTickets - userTickets
 	
 	// create a custom struct data initial
@@ -99,4 +100,12 @@ func bookeTicket(firstName string,lastName string, email string, userTickets uin
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName,userTickets, email)
 	fmt.Printf("%v tickets are remaining!\n",remainingTickets)
+}
+
+func sendTicket(userTickets uint, firstName string, lastName string, email string){
+	time.Sleep(15*time.Second)
+	fmt.Println("##########")
+	var ticket = fmt.Sprintf("%v tickets for %v %v", userTickets, firstName, lastName)//formatting string
+	fmt.Printf("Sending ticket:\n %v \nTo email address %v\n", ticket, email)
+	fmt.Println("#########")
 }
